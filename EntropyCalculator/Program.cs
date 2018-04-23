@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EntropyCalculator
 {
@@ -22,6 +18,17 @@ namespace EntropyCalculator
 
         static void Main(string[] args)
         {
+            // Print help.
+            if (args.Length == 0)
+            {
+                Console.WriteLine("Usage: App <file> [-s|-l|-d|-u]");
+                Console.WriteLine("-s: Shannon entropy mode");
+                Console.WriteLine("-l: Length-only mode");
+                Console.WriteLine("-d: Distinct-character mode");
+                Console.WriteLine("-u: LUDS mode");
+            }
+
+            // Check input file exists.
             if (!File.Exists(args[0]))
             {
                 Console.WriteLine("Couldn't find input file.");
@@ -32,16 +39,32 @@ namespace EntropyCalculator
             var input = ReadFileAsLines(args[0]);
 
             // Decide on mode.
-            var mode = EntropyMode.LudsClasses;
-            if (args.Length == 2 && args[1] == "-d")
+            var mode = EntropyMode.Shannon; // Shannon by default.
+            if (args.Length == 2)
             {
-                mode = EntropyMode.DistinctCharacter;
+                switch (args[1])
+                {
+                    case "-s":
+                        mode = EntropyMode.Shannon;
+                        break;
+                    case "-l":
+                        mode = EntropyMode.LengthOnly;
+                        break;
+                    case "-d":
+                        mode = EntropyMode.DistinctCharacter;
+                        break;
+                    case "-u":
+                        mode = EntropyMode.LudsClasses;
+                        break;
+                }
             }
             var calculator = ScoreCalculatorFactory.GetScoreCalculator(mode);
 
+            // Process input.
+            Console.WriteLine($"password, score");
             for (int i = 0; i < input.Length; i++)
             {
-                Console.WriteLine($"{input[i]}:{calculator.CalculateScore(input[i])}");
+                Console.WriteLine($"{input[i]}, {calculator.CalculateScore(input[i])}");
             }
         }
     }
