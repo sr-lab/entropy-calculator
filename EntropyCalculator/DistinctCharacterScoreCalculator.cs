@@ -1,20 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 
 namespace EntropyCalculator
 {
+    /// <summary>
+    /// A score calculator that returns the number of distinct characters in a string.
+    /// </summary>
     public class DistinctCharacterScoreCalculator : IScoreCalculator
     {
         public double CalculateScore(string str)
         {
-            var chars = new List<char>();
-            foreach (var c in str)
-            {
-                if (!chars.Contains(c))
-                {
-                    chars.Add(c);
-                }
-            }
-            return chars.Count;
+            return str.Distinct().Count();
         }
     }
 }

@@ -1,22 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EntropyCalculator
 {
-    class ShannonScoreCalculator : IScoreCalculator
+    /// <summary>
+    /// A score calculator that returns the per-character Shannon entropy of a password.
+    /// </summary>
+    public class ShannonScoreCalculator : IScoreCalculator
     {
+        /// <summary>
+        /// Returns the per-character Shannon entropy of a password.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public double CalculateScore(string str)
         {
             var map = new Dictionary<char, int>();
             foreach (char c in str)
             {
                 if (!map.ContainsKey(c))
+                {
                     map.Add(c, 1);
+                }
                 else
+                {
                     map[c] += 1;
+                }
             }
 
             double result = 0.0;

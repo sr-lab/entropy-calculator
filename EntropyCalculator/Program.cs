@@ -32,7 +32,7 @@ namespace EntropyCalculator
             var input = ReadFileAsLines(args[0]);
 
             // Decide on mode.
-            var mode = EntropyMode.CharacterClass;
+            var mode = EntropyMode.LudsClasses;
             if (args.Length == 2 && args[1] == "-d")
             {
                 mode = EntropyMode.DistinctCharacter;

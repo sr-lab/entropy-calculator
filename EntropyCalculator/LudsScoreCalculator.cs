@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace EntropyCalculator
 {
+    /// <summary>
+    /// A score calculator that returns the number of LUDS character classes in a strong.
+    /// </summary>
     public class LudsScoreCalculator : IScoreCalculator
     {
         public double CalculateScore(string str)

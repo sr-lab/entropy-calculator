@@ -7,7 +7,7 @@
     {
         LengthOnly = 0,
         Shannon = 1,
-        CharacterClass = 2,
+        LudsClasses = 2,
         DistinctCharacter = 3
     }
 }
