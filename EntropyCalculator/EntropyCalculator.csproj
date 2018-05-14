@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ShannonScoreCalculator.cs" />
     <Compile Include="DistinctCharacterScoreCalculator.cs" />
     <Compile Include="LudsScoreCalculator.cs" />
     <Compile Include="EntropyMode.cs" />
@@ -50,7 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IScoreCalculator.cs" />
     <Compile Include="ScoreCalculatorFactory.cs" />
-    <Compile Include="ShannonScoreCalculator.cs" />
+    <Compile Include="CharShannonScoreCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
