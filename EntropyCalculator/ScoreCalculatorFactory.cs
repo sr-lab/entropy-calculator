@@ -14,8 +14,8 @@
         {
             switch (mode)
             {
-                case EntropyMode.Shannon:
-                    return new ShannonScoreCalculator();
+                case EntropyMode.CharShannon:
+                    return new CharShannonScoreCalculator();
                 case EntropyMode.LengthOnly:
                     return new LengthOnlyScoreCalculator();
                 case EntropyMode.DistinctCharacter:

@@ -21,7 +21,8 @@ namespace EntropyCalculator
             // Print help.
             if (args.Length == 0)
             {
-                Console.WriteLine("Usage: App <file> [-s|-l|-d|-u]");
+                Console.WriteLine("Usage: App <file> [-c|-s|-l|-d|-u]");
+                Console.WriteLine("-c: Per-character Shannon entropy mode");
                 Console.WriteLine("-s: Shannon entropy mode");
                 Console.WriteLine("-l: Length-only mode");
                 Console.WriteLine("-d: Distinct-character mode");
@@ -29,14 +30,15 @@ namespace EntropyCalculator
             }
 
             // Check input file exists.
-            if (!File.Exists(args[0]))
+            var path = args[0];
+            if (!File.Exists(path))
             {
-                Console.WriteLine("Couldn't find input file.");
+                Console.WriteLine($"Couldn't find input file '{path}'.");
                 return;
             }
 
             // Read in file.
-            var input = ReadFileAsLines(args[0]);
+            var input = ReadFileAsLines(path);
 
             // Decide on mode.
             var mode = EntropyMode.Shannon; // Shannon by default.
@@ -44,6 +46,9 @@ namespace EntropyCalculator
             {
                 switch (args[1])
                 {
+                    case "-c":
+                        mode = EntropyMode.CharShannon;
+                        break;
                     case "-s":
                         mode = EntropyMode.Shannon;
                         break;

@@ -6,8 +6,9 @@
     public enum EntropyMode
     {
         LengthOnly = 0,
-        Shannon = 1,
-        LudsClasses = 2,
-        DistinctCharacter = 3
+        CharShannon = 1,
+        Shannon = 2,
+        LudsClasses = 3,
+        DistinctCharacter = 4
     }
 }

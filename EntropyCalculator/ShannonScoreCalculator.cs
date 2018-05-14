@@ -1,42 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EntropyCalculator
+﻿namespace EntropyCalculator
 {
     /// <summary>
-    /// A score calculator that returns the per-character Shannon entropy of a password.
+    /// A score calculator that returns the Shannon entropy of a password.
     /// </summary>
     public class ShannonScoreCalculator : IScoreCalculator
     {
         /// <summary>
-        /// Returns the per-character Shannon entropy of a password.
+        /// The per-character entropy calculator that underlies this object.
         /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
+        private readonly CharShannonScoreCalculator underlyingCalculator;
+
+        /// <summary>
+        /// Initializes a new instance of a score calculator that returns the Shannon entropy of a password.
+        /// </summary>
+        public ShannonScoreCalculator() => underlyingCalculator = new CharShannonScoreCalculator();
+
         public double CalculateScore(string str)
         {
-            var map = new Dictionary<char, int>();
-            foreach (char c in str)
-            {
-                if (!map.ContainsKey(c))
-                {
-                    map.Add(c, 1);
-                }
-                else
-                {
-                    map[c] += 1;
-                }
-            }
-
-            double result = 0.0;
-            int len = str.Length;
-            foreach (var item in map)
-            {
-                var frequency = (double)item.Value / len;
-                result -= frequency * (Math.Log(frequency) / Math.Log(2));
-            }
-
-            return result;
+            // Just multiply per-character entropy by length.
+            return underlyingCalculator.CalculateScore(str) * str.Length;
         }
     }
 }
