@@ -10,18 +10,21 @@ namespace EntropyCalculator
     {
         public double CalculateScore(string str)
         {
+            // Get counts of distinct characters in `str`.
             var map = new Dictionary<char, int>();
-            foreach (char c in str)
+            foreach (char chr in str)
             {
-                if (!map.ContainsKey(c))
+                if (!map.ContainsKey(chr))
                 {
-                    map.Add(c, 1);
+                    map.Add(chr, 1);
                 }
                 else
                 {
-                    map[c] += 1;
+                    map[chr] += 1;
                 }
             }
+
+            // Calculate per-character entropy.
             double result = 0.0;
             int len = str.Length;
             foreach (var item in map)
