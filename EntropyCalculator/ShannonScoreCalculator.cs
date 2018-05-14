@@ -13,7 +13,10 @@
         /// <summary>
         /// Initializes a new instance of a score calculator that returns the Shannon entropy of a password.
         /// </summary>
-        public ShannonScoreCalculator() => underlyingCalculator = new CharShannonScoreCalculator();
+        public ShannonScoreCalculator()
+        {
+            underlyingCalculator = new CharShannonScoreCalculator();
+        }
 
         public double CalculateScore(string str)
         {
