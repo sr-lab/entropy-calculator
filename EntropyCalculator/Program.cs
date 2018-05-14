@@ -27,6 +27,7 @@ namespace EntropyCalculator
                 Console.WriteLine("-l: Length-only mode");
                 Console.WriteLine("-d: Distinct-character mode");
                 Console.WriteLine("-u: LUDS mode");
+                return;
             }
 
             // Check input file exists.
