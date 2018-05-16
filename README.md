@@ -1,4 +1,4 @@
-# Entropy Calcuoator
+# Entropy Calculator
 Extensible batch password entropy calculator.
 
 ```
