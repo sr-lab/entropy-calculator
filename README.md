@@ -51,4 +51,4 @@ The program has a number of different scoring modes. Currently `-s` is the defau
 * -s: Shannon entropy mode, equivalent to `-c` multiplied by the string length (`-l`).
 * -l: Given a string of length `n` returns `n`.
 * -d: Given a string containing `k` distinct characters (e.g. for `aabc123` then `k=6`) returns `k`.
-* -u: Given s string containing `j` LUDS character classes (lower, upper, digit, symbol) returns `j`.
+* -u: Given a string containing `j` LUDS character classes (lower, upper, digit, symbol) returns `j`.
